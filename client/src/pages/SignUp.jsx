@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
@@ -23,6 +24,7 @@ export default function SignUp() {
         },
         body: JSON.stringify(formData),
       });
+      console.log(res)
       const data = await res.json();
       if (data.success == false) {
         setError(true);
@@ -67,6 +69,7 @@ export default function SignUp() {
         >
           {lodinge ? "Loding..." : "Sign Up"}
         </button>
+        <OAuth/>
       </form>
 
       <div className="flex gap-2 mt-5">
